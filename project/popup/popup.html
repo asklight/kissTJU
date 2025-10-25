@@ -10,32 +10,35 @@
         }
 
         body {
-            width: 200px;
+            width: 280px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
+            /* 关键：让body高度自适应内容 */
+            height: auto;
+            min-height: 50px;
         }
 
         .header {
             background: #336dab;
             color: white;
-            padding: 7px 10px;
-            font-size: 14px;
+            padding: 8px 10px;
+            font-size: 15px; /* 加大标题字体 */
             text-align: center;
             font-weight: 600;
         }
 
         .content {
-            padding: 7px 9px;
+            padding: 8px 10px;
         }
 
         .note {
-            font-size: 8px;
+            font-size: 10px; /* 加大提示文字 */
             color: #666;
             text-align: center;
-            margin-bottom: 5px;
-            padding: 2px;
+            margin-bottom: 6px;
+            padding: 3px;
             background: #f5f8ff;
             border-radius: 2px;
         }
@@ -43,35 +46,108 @@
         .links {
             display: flex;
             flex-direction: column;
-            gap: 1px;
+            gap: 2px;
         }
 
         .category-divider {
             height: 0.5px;
             background: #e5e7eb;
-            margin: 4px 0;
+            margin: 5px 0;
         }
 
-        .link-item a {
+        .link-item {
             display: flex;
             align-items: center;
-            padding: 4px 8px;
-            color: #333;
-            text-decoration: none;
-            font-size: 12px;
+            padding: 5px 8px;
             background: #f8f9fa;
             border-radius: 3px;
             transition: background 0.1s ease;
+            flex-wrap: wrap;
+        }
+
+        .link-item:hover {
+            background: #e8f0fe;
+        }
+
+        .link-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.1s ease;
+            margin-right: 5px;
+            flex: 1;
+            font-size: 13px; /* 加大链接字体 */
         }
 
         .link-item a:hover {
-            background: #e8f0fe;
             color: #336dab;
         }
 
         .link-icon {
             margin-right: 6px;
-            font-size: 10px;
+            font-size: 12px; /* 加大图标 */
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .link-icon.active {
+            transform: rotate(90deg);
+        }
+
+        .same-row {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .main-site {
+            font-size: 13px; /* 加大主站文字 */
+            flex: 3;
+        }
+
+        .backup-site {
+            font-size: 11px; /* 加大备用站文字 */
+            flex: 1;
+            text-align: right;
+        }
+
+        .separator {
+            color: #999;
+            font-size: 10px; /* 加大分隔符 */
+            margin: 0 4px;
+        }
+
+        .controls {
+            width: 100%;
+            display: none; /* 默认隐藏 */
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 4px 0 0 18px;
+            padding-top: 4px;
+            border-top: 1px dashed #eee;
+            max-height: 0; /* 初始高度为0 */
+            overflow: hidden;
+            transition: max-height 0.3s ease; /* 平滑过渡 */
+        }
+
+        .controls.show {
+            display: flex;
+            max-height: 300px; /* 展开时最大高度 */
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            font-size: 11px; /* 加大控件文字 */
+            color: #555;
+            gap: 3px;
+            width: 48%;
+        }
+
+        .control-item input[type="checkbox"] {
+            width: 10px; /* 加大复选框 */
+            height: 10px;
+            accent-color: #336dab;
         }
     </style>
 </head>
@@ -81,14 +157,65 @@
     <div class="content">
         <div class="note">(刷新生效)</div>
         <div class="links">
-            <div class="link-item"><a id="link_libSet" href="https://seatw.lib.tju.edu.cn/"><span class="link-icon">📚</span>图书馆选座</a></div>
-            <div class="link-item"><a id="link_lib" href="http://www.lib.tju.edu.cn/"><span class="link-icon">🏛️</span>图书馆主页</a></div>
-            <div class="link-item"><a id="link_classes" href="http://classes.tju.edu.cn/"><span class="link-icon">📖</span>教育教学主站</a></div>
-            <div class="link-item"><a id="link_saa" href="http://saa.tju.edu.cn/"><span class="link-icon">🔄</span>教学备用站</a></div>
-            <div class="link-item"><a id="link_thesis" href="http://121.193.132.43/thesis/"><span class="link-icon">📑</span>毕业论文管理</a></div>
-            <div class="link-item"><a id="link_party" href="https://party.twt.edu.cn/"><span class="link-icon">🚩</span>天大党建</a></div>
-            <div class="link-item"><a id="link_zongce" href="http://172.31.126.2/"><span class="link-icon">📊</span>综测评价系统</a></div>
-            <div class="link-item"><a id="link_sso" href="https://sso.tju.edu.cn/"><span class="link-icon">🔐</span>融合门户</a></div>
+            <!-- 图书馆选座 -->
+            <div class="link-item">
+                <span class="link-icon" data-control="libSet-controls">📚</span>
+                <a id="link_libSet" href="https://seatw.lib.tju.edu.cn/index.php/reserve/index.html">图书馆选座</a>
+            </div>
+
+            <div class="link-item">
+                <span class="link-icon">🏛️</span>
+                <a id="link_lib" href="http://www.lib.tju.edu.cn/">图书馆主页</a>
+            </div>
+            
+            <!-- 教育教学信息主站 -->
+            <div class="link-item">
+                <span class="link-icon" data-control="classes-controls">📖</span>
+                <div class="same-row">
+                    <a id="link_classes" href="http://classes.tju.edu.cn/" class="main-site">选课网主站</a>
+                    <span class="separator">|</span>
+                    <a id="link_saa" href="http://saa.tju.edu.cn/" class="backup-site">备用站</a>
+                </div>
+                <div id="classes-controls" class="controls">
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s1" value="0">自动评教</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s2" value="0">培养计划表头固定</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s3" value="0">移除底栏</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s4" value="0">课表功能增强</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s5" value="0">计算加权</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s7" value="0">实验选课增强</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s8" value="0">子网页功能增强</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="classes-s9" value="0">开课课表查看</label>
+                </div>
+            </div>
+
+            <!-- 毕业论文管理 -->
+            <div class="link-item">
+                <span class="link-icon" data-control="thesis-controls">📑</span>
+                <a id="link_thesis" href="http://121.193.132.43/thesis/">毕业论文管理</a>
+                <div id="thesis-controls" class="controls">
+                    <label class="control-item"><input type="checkbox" class="testF" id="thesis-s1" value="0">已阅读</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="thesis-s2" value="0">自动登录</label>
+                </div>
+            </div>
+
+            <div class="link-item">
+                <span class="link-icon">🚩</span>
+                <a id="link_party" href="https://party.twt.edu.cn/">天大党建</a>
+            </div>
+            <div class="link-item">
+                <span class="link-icon">📊</span>
+                <a id="link_zongce" href="http://172.31.126.2/">综测评价系统</a>
+            </div>
+            
+            <!-- 融合门户 -->
+            <div class="link-item">
+                <span class="link-icon" data-control="sso-controls">🔐</span>
+                <a id="link_sso" href="https://sso.tju.edu.cn/">融合门户</a>
+                <div id="sso-controls" class="controls">
+                    <label class="control-item"><input type="checkbox" class="testF" id="sso-s3" value="0">自动填验证码</label>
+                    <label class="control-item"><input type="checkbox" class="testF" id="sso-s4" value="0">强密码</label>
+                </div>
+            </div>
 
             <div class="category-divider"></div>
 
