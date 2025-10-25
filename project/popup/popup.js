@@ -1,5 +1,5 @@
 //写给开发者：添加功能要注意6个部分，链接，链接data，switch,switchdata,init-kissTJUconfig,manifect.json
-const isLite = false; //是否为精简版分支 main分支会有花里胡哨的功能 精简版会砍掉大体积的图片视频音频资源等
+const isLite = true; //是否为精简版分支 main分支会有花里胡哨的功能 精简版会砍掉大体积的图片视频音频资源等
 
 const title = document.getElementById("hhhh");
 const sentence = document.getElementById("sentence");
@@ -22,6 +22,14 @@ const link_pigai = document.getElementById("link_pigai");
 const link_net = document.getElementById("link_net");
 const link_netVer = document.getElementById("link_netVer");
 const link_thesis = document.getElementById("link_thesis");
+const link_yuclass = document.getElementById("link_yuclass");
+const link_zhihuishu = document.getElementById("link_zhihuishu");
+const link_party = document.getElementById("link_party");
+const link_xuexitong = document.getElementById("link_xuexitong");
+const link_zongce = document.getElementById("link_zongce");
+const link_cstjuse = document.getElementById("link_cstjuse");
+const link_xufang = document.getElementById("link_xufang");
+const link_zidongceping = document.getElementById("link_zidongceping");
 
 const footer = document.getElementById("wwww");
 
@@ -41,12 +49,22 @@ const linkData = [
 	{ key: link_geogeba, src: "https://www.geogebra.org/calculator" },
 	{ key: link_cet, src: "https://cet.neea.edu.cn" },
 	{ key: link_cg, src: "https://tyapp.chingo.cn/cgapp/" },
-	{ key: link_mooc, src: "https://www.icourse163.org/" },
 	{ key: link_sso, src: "https://sso.tju.edu.cn/cas/login" },
 	{ key: link_pigai, src: "http://www.pigai.org/" },
 	{ key: link_net, src: "http://202.113.15.50:8800/?" },
 	{ key: link_netVer, src: "http://202.113.5.130/srun_portal_pc?ac_id=11&theme=tju" },
 	{ key: link_thesis, src: "http://121.193.132.43/thesis/" },
+  { key: link_party, 
+		src:"https://party.twt.edu.cn//client/?page=applicant&do=20course_test&course_id=47#/"},
+	{ key: link_mooc, src: "https://www.icourse163.org/" },
+  { key: link_yuclass, src: "https://changjiang.yuketang.cn/web"},
+  { key: link_zhihuishu, src: "https://onlineweb.zhihuishu.com/onlinestuh5"},
+  { key: link_xuexitong, 
+		src:"https://i.chaoxing.com/base?vflag=true&fid=31138&backUrl=http://v9.chaoxing.com"},
+	{ key: link_zongce, src: "http://172.31.126.2/user/profile"},
+	{ key: link_cstjuse, src: "https://cs.tjuse.com/zh-CN/"},
+	{ key: link_xufang, src: "http://172.28.45.56/" },
+	{ key: link_zidongceping, src: "http://39.101.72.13/" },
 ];
 
 const seat_s1 = document.getElementById("seat-s1");

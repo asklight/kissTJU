@@ -1,130 +1,113 @@
 <html>
-
 <head>
     <meta charset="utf-8" />
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+
         body {
-            width: 500px;
+            width: 200px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        button {
-            background-color: #336dab;
-            border: none;
+        .header {
+            background: #336dab;
             color: white;
-            padding: 15px 32px;
+            padding: 7px 10px;
+            font-size: 14px;
             text-align: center;
-            font-size: 16px;
+            font-weight: 600;
         }
 
-        .linkTab {
+        .content {
+            padding: 7px 9px;
+        }
+
+        .note {
+            font-size: 8px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 5px;
+            padding: 2px;
+            background: #f5f8ff;
+            border-radius: 2px;
+        }
+
+        .links {
             display: flex;
             flex-direction: column;
+            gap: 1px;
         }
 
-        .testF {
-            word-break: keep-all;
+        .category-divider {
+            height: 0.5px;
+            background: #e5e7eb;
+            margin: 4px 0;
         }
 
-        .foot {
+        .link-item a {
             display: flex;
-            flex-direction: row;
+            align-items: center;
+            padding: 4px 8px;
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+            background: #f8f9fa;
+            border-radius: 3px;
+            transition: background 0.1s ease;
+        }
+
+        .link-item a:hover {
+            background: #e8f0fe;
+            color: #336dab;
+        }
+
+        .link-icon {
+            margin-right: 6px;
+            font-size: 10px;
         }
     </style>
 </head>
 
 <body>
-    <h1 id="hhhh">亲爱的朋友，你好：</h1>
-    <i id="sentence"></i>
-    <br></br>
-    <div class="linkTab">
-        <a>(所有设置刷新网页或重启浏览器生效)</a>
-        <div>
-            <a id="link_libSet" href="https://seatw.lib.tju.edu.cn/index.php/reserve/index.html">图书馆选座</a>
-            <input type="checkbox" class="testF" id="seat-s1" value="0" disabled="true">自动抢座(不可用)</input>
-            <input type="checkbox" class="testF" id="seat-s2" value="0">点击小心心</input>
-        </div>
-        <div>
-            <a id="link_lib" href="http://www.lib.tju.edu.cn/">图书馆</a>
-            <input type="checkbox" class="testF" id="lib-s1" value="0" disabled="true">点击小心心(不可用)</input>
-        </div>
-        <div>
-            <a id="link_classes" href="http://classes.tju.edu.cn/eams/homeExt.action">教育教学信息主站</a>
-            <a id="link_saa" href="http://saa.tju.edu.cn/eams/homeExt.action">备用站</a>
-            <a id="link_selectCourse" href="http://classes.tju.edu.cn/eams/stdElectCourse.action">直达选课</a>
-            <input type="checkbox" class="testF" id="classes-s1" value="0">自动评教</input>
-            <input type="checkbox" class="testF" id="classes-s2" value="0">培养计划表头固定</input>
-            <input type="checkbox" class="testF" id="classes-s3" value="0">移除底栏</input>
-            <input type="checkbox" class="testF" id="classes-s4" value="0">课表功能增强</input>
-            <input type="checkbox" class="testF" id="classes-s5" value="0">计算加权</input>
-            <input type="checkbox" class="testF" id="classes-s6" value="0">点击小心心</input>
-            <input type="checkbox" class="testF" id="classes-s7" value="0">实验选课功能增强</input>
-            <input type="checkbox" class="testF" id="classes-s8" value="0">子网页功能增强</input>
-            <input type="checkbox" class="testF" id="classes-s9" value="0">开课课表查看</input>
+    <div class="header">天大常用服务导航</div>
+    <div class="content">
+        <div class="note">(刷新生效)</div>
+        <div class="links">
+            <div class="link-item"><a id="link_libSet" href="https://seatw.lib.tju.edu.cn/"><span class="link-icon">📚</span>图书馆选座</a></div>
+            <div class="link-item"><a id="link_lib" href="http://www.lib.tju.edu.cn/"><span class="link-icon">🏛️</span>图书馆主页</a></div>
+            <div class="link-item"><a id="link_classes" href="http://classes.tju.edu.cn/"><span class="link-icon">📖</span>教育教学主站</a></div>
+            <div class="link-item"><a id="link_saa" href="http://saa.tju.edu.cn/"><span class="link-icon">🔄</span>教学备用站</a></div>
+            <div class="link-item"><a id="link_thesis" href="http://121.193.132.43/thesis/"><span class="link-icon">📑</span>毕业论文管理</a></div>
+            <div class="link-item"><a id="link_party" href="https://party.twt.edu.cn/"><span class="link-icon">🚩</span>天大党建</a></div>
+            <div class="link-item"><a id="link_zongce" href="http://172.31.126.2/"><span class="link-icon">📊</span>综测评价系统</a></div>
+            <div class="link-item"><a id="link_sso" href="https://sso.tju.edu.cn/"><span class="link-icon">🔐</span>融合门户</a></div>
 
-        </div>
-        <div>
-            <a id="link_scloolMap" href="http://map.tju.edu.cn/index.shtml">校园地图</a>
-        </div>
-        <div>
-            <a id="link_serv" href="http://serv.tju.edu.cn">综合服务平台</a>
-        </div>
-        <div>
-            <a id="link_ee" href="http://ee.tju.edu.cn/">办公服务平台(已弃用)</a>
-        </div>
-        <div>
-            <a id="link_twt" href="https://theory.twt.edu.cn/">天外天</a>
-            <input type="checkbox" class="testF" id="twt-s1" value="0" disabled="true">自动答题(不可用)</input>
-        </div>
-        <div>
-            <a id="link_geogeba" href="https://www.geogebra.org/calculator">GeoGebra</a>
-        </div>
-        <div>
-            <a id="link_cet" href="https://cet.neea.edu.cn">CET</a>
-        </div>
-        <div>
-            <a id="link_cg" href="https://tyapp.chingo.cn/cgapp/">创高控制台</a>
-        </div>
-        <div>
-            <a id="link_mooc" href="https://www.icourse163.org/">MOOC</a>
-            <input type="checkbox" class="testF" id="mooc-s1" value="0">视频跳答题</input>
-        </div>
-        <div>
-            <a id="link_sso" href="https://sso.tju.edu.cn/cas/login">验证/融合门户</a>
-            <input type="checkbox" class="testF" id="sso-s1" value="0">原神启动</input>
-            <input type="checkbox" class="testF" id="sso-s2" value="0">开除海小棠</input>
-            <select id="sso-robotselect">
-                <option value="0">选择你的新欢</option>
-                <option value="1">八重神子</option>
-                <option value="2">胡桃</option>
-                <option value="3">刻晴</option>
-                <option value="4">可莉</option>
-                <option value="5">阿尼亚</option>
-                <option value="6">蔡徐坤</option>
-                <option value="7">丁真</option>
-            </select>
-            <input type="checkbox" class="testF" id="sso-s3" value="0">自动填验证码</input>
-            <input type="checkbox" class="testF" id="sso-s4" value="0">不是弱密码</input>
-        </div>
-        <div>
-            <a id="link_pigai" href="http://www.pigai.org/index.php">批改网</a>
-            <input type="checkbox" class="testF" id="pigai-s1" value="0">作文可粘贴</input>
-        </div>
-        <div>
-            <a id="link_net" href="http://202.113.15.50:8800/?">校园网</a>
-            <a id="link_netVer" href="http://202.113.5.130/srun_portal_pc?ac_id=11&theme=tju">校园网验证</a>
-        </div>
-        <div>
-            <a id="link_thesis" href="http://121.193.132.43/thesis/">毕业论文</a>
-            <input type="checkbox" class="testF" id="thesis-s1" value="0">我真的已阅读</input>
-            <input type="checkbox" class="testF" id="thesis-s2" value="0">自动登录</input>
+            <div class="category-divider"></div>
+
+            <div class="link-item"><a id="link_cstjuse" href="https://cs.tjuse.com/"><span class="link-icon">📚</span>课程共享计划</a></div>
+            <div class="link-item"><a id="link_xufang" href="http://172.28.45.56/"><span class="link-icon">🎮</span>虚拟仿真平台</a></div>
+            <div class="link-item"><a id="link_zidongceping" href="http://39.101.72.13/"><span class="link-icon">🤖</span>自动测评平台</a></div>
+
+            <div class="category-divider"></div>
+
+            <div class="link-item"><a id="link_mooc" href="https://www.icourse163.org/"><span class="link-icon">🎓</span>中国大学MOOC</a></div>
+            <div class="link-item"><a id="link_zhihuishu" href="https://onlineweb.zhihuishu.com/"><span class="link-icon">🌳</span>智慧树</a></div>
+            <div class="link-item"><a id="link_xuexitong" href="https://i.chaoxing.com/"><span class="link-icon">📚</span>超星学习通</a></div>
+            <div class="link-item"><a id="link_yuclass" href="https://changjiang.yuketang.cn/"><span class="link-icon">🌧️</span>长江雨课堂</a></div>
+
+            <div class="category-divider"></div>
+
+            <div class="link-item"><a id="link_cet" href="https://cet.neea.edu.cn/"><span class="link-icon">📝</span>CET四六级</a></div>
         </div>
     </div>
-
-    <div class="foot">
-        <h3 id="wwww">作者: 楚轩</h3>
-    </div>
-
     <script src="popup.js"></script>
 </body>
-
 </html>
