@@ -1,6 +1,6 @@
 {
   "name": "kiss_TJU",
-  "version": "1.5.3",
+  "version": "1.5.8",
   "manifest_version": 3,
   "description": "A collection of tools to improve TJUer's life experience",
   "icons": {
@@ -15,19 +15,22 @@
   "content_scripts": [
     {
       "matches": [
-        "http://classes.tju.edu.cn/*",
-        "https://seatw.lib.tju.edu.cn/*",
-        "http://www.lib.tju.edu.cn/*",
-        "http://map.tju.edu.cn/index.shtml",
-        "http://serv.tju.edu.cn/*",
-        "http://ee.tju.edu.cn/*",
-        "https://theory.twt.edu.cn/*",
-        "https://cet.neea.edu.cn/*",
-        "https://tyapp.chingo.cn/cgapp/*",
-        "https://www.icourse163.org/",
-        "https://sso.tju.edu.cn/*",
-        "http://www.pigai.org/*",
-        "http://121.193.132.43/*"
+        "*://classes.tju.edu.cn/*",
+        "*://saa.tju.edu.cn/*",
+        "*://seatw.lib.tju.edu.cn/*",
+        "*://www.lib.tju.edu.cn/*",
+        "*://map.tju.edu.cn/*",
+        "*://serv.tju.edu.cn/*",
+        "*://ee.tju.edu.cn/*",
+        "*://theory.twt.edu.cn/*",
+        "*://cet.neea.edu.cn/*",
+        "*://tyapp.chingo.cn/cgapp/*",
+        "*://www.icourse163.org/*",
+        "*://icourse163.org/*",
+        "*://sso.tju.edu.cn/*",
+        "*://www.pigai.org/*",
+        "*://pigai.org/*",
+        "*://121.193.132.43/*"
       ],
       "js": [
         "robotLib.js",

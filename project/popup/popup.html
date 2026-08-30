@@ -14,7 +14,8 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            max-height: 600px;
+            overflow-y: auto;
             /* 关键：让body高度自适应内容 */
             height: auto;
             min-height: 50px;
@@ -159,7 +160,7 @@
         <div class="links">
             <!-- 图书馆选座 -->
             <div class="link-item">
-                <span class="link-icon" data-control="libSet-controls">📚</span>
+                <span class="link-icon">📚</span>
                 <a id="link_libSet" href="https://seatw.lib.tju.edu.cn/index.php/reserve/index.html">图书馆选座</a>
             </div>
 
@@ -198,15 +199,9 @@
                 </div>
             </div>
 
-            <div class="link-item">
-                <span class="link-icon">🚩</span>
-                <a id="link_party" href="https://party.twt.edu.cn/">天大党建</a>
-            </div>
-            <div class="link-item">
-                <span class="link-icon">📊</span>
-                <a id="link_zongce" href="http://172.31.126.2/">综测评价系统</a>
-            </div>
-            
+            <div class="link-item"><a id="link_party" href="https://party.twt.edu.cn/"><span class="link-icon">🚩</span>天大党建</a></div>
+            <div class="link-item"><a id="link_zongce" href="http://172.31.126.2/"><span class="link-icon">📊</span>综测评价系统</a></div>
+
             <!-- 融合门户 -->
             <div class="link-item">
                 <span class="link-icon" data-control="sso-controls">🔐</span>
@@ -218,20 +213,15 @@
             </div>
 
             <div class="category-divider"></div>
-
             <div class="link-item"><a id="link_cstjuse" href="https://cs.tjuse.com/"><span class="link-icon">📚</span>课程共享计划</a></div>
             <div class="link-item"><a id="link_xufang" href="http://172.28.45.56/"><span class="link-icon">🎮</span>虚拟仿真平台</a></div>
             <div class="link-item"><a id="link_zidongceping" href="http://39.101.72.13/"><span class="link-icon">🤖</span>自动测评平台</a></div>
-
             <div class="category-divider"></div>
-
             <div class="link-item"><a id="link_mooc" href="https://www.icourse163.org/"><span class="link-icon">🎓</span>中国大学MOOC</a></div>
             <div class="link-item"><a id="link_zhihuishu" href="https://onlineweb.zhihuishu.com/"><span class="link-icon">🌳</span>智慧树</a></div>
             <div class="link-item"><a id="link_xuexitong" href="https://i.chaoxing.com/"><span class="link-icon">📚</span>超星学习通</a></div>
             <div class="link-item"><a id="link_yuclass" href="https://changjiang.yuketang.cn/"><span class="link-icon">🌧️</span>长江雨课堂</a></div>
-
             <div class="category-divider"></div>
-
             <div class="link-item"><a id="link_cet" href="https://cet.neea.edu.cn/"><span class="link-icon">📝</span>CET四六级</a></div>
         </div>
     </div>
