@@ -6,89 +6,121 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", Arial, sans-serif;
+            font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
         }
 
         body {
-            width: 280px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 320px;
+            background: #f3f6fb;
+            color: #243447;
             max-height: 600px;
             overflow-y: auto;
-            /* 关键：让body高度自适应内容 */
             height: auto;
-            min-height: 50px;
+            min-height: 80px;
+            scrollbar-width: thin;
+            scrollbar-color: #b8c8da transparent;
+        }
+
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #b8c8da;
+            border-radius: 6px;
         }
 
         .header {
-            background: #336dab;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: linear-gradient(135deg, #23558e, #347eb8);
             color: white;
-            padding: 8px 10px;
-            font-size: 15px; /* 加大标题字体 */
+            padding: 13px 12px;
+            font-size: 16px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: .5px;
+            box-shadow: 0 2px 8px rgba(35, 85, 142, .22);
         }
 
         .content {
-            padding: 8px 10px;
+            padding: 10px;
         }
 
         .note {
-            font-size: 10px; /* 加大提示文字 */
-            color: #666;
+            font-size: 11px;
+            color: #607286;
             text-align: center;
-            margin-bottom: 6px;
-            padding: 3px;
-            background: #f5f8ff;
-            border-radius: 2px;
+            margin-bottom: 9px;
+            padding: 6px 8px;
+            background: #eaf2fb;
+            border: 1px solid #d8e5f2;
+            border-radius: 6px;
         }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 6px;
         }
 
         .category-divider {
-            height: 0.5px;
-            background: #e5e7eb;
-            margin: 5px 0;
+            height: 1px;
+            background: #dbe4ee;
+            margin: 3px 4px;
         }
 
         .link-item {
             display: flex;
             align-items: center;
-            padding: 5px 8px;
-            background: #f8f9fa;
-            border-radius: 3px;
-            transition: background 0.1s ease;
+            min-height: 38px;
+            padding: 7px 10px;
+            background: #fff;
+            border: 1px solid #e2eaf2;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(35, 65, 95, .06);
+            transition: background .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease;
             flex-wrap: wrap;
         }
 
         .link-item:hover {
-            background: #e8f0fe;
+            background: #f8fbff;
+            border-color: #a9c8e5;
+            box-shadow: 0 3px 9px rgba(46, 106, 158, .13);
+            transform: translateY(-1px);
         }
 
         .link-item a {
-            color: #333;
+            color: #263b50;
             text-decoration: none;
-            transition: color 0.1s ease;
+            transition: color .15s ease;
             margin-right: 5px;
             flex: 1;
-            font-size: 13px; /* 加大链接字体 */
+            font-size: 13px;
+            line-height: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .link-item a:hover {
-            color: #336dab;
+            color: #2167a5;
         }
 
         .link-icon {
-            margin-right: 6px;
-            font-size: 12px; /* 加大图标 */
+            width: 24px;
+            margin-right: 7px;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
             flex-shrink: 0;
+            cursor: default;
+            transition: transform .2s ease;
+        }
+
+        .link-icon[data-control] {
             cursor: pointer;
-            transition: transform 0.2s ease;
         }
 
         .link-icon.active {
@@ -99,56 +131,62 @@
             display: flex;
             align-items: center;
             flex: 1;
+            min-width: 0;
+            gap: 4px;
         }
 
         .main-site {
-            font-size: 13px; /* 加大主站文字 */
-            flex: 3;
+            font-size: 13px;
+            flex: 1 1 auto;
         }
 
         .backup-site {
-            font-size: 11px; /* 加大备用站文字 */
-            flex: 1;
+            font-size: 11px;
+            flex: 0 0 auto !important;
             text-align: right;
         }
 
         .separator {
-            color: #999;
-            font-size: 10px; /* 加大分隔符 */
-            margin: 0 4px;
+            color: #a9b7c5;
+            font-size: 11px;
         }
 
         .controls {
             width: 100%;
-            display: none; /* 默认隐藏 */
+            display: none;
             flex-wrap: wrap;
-            gap: 6px;
-            margin: 4px 0 0 18px;
-            padding-top: 4px;
-            border-top: 1px dashed #eee;
-            max-height: 0; /* 初始高度为0 */
+            gap: 5px;
+            margin: 7px 0 0 31px;
+            padding-top: 7px;
+            border-top: 1px solid #e7eef5;
+            max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease; /* 平滑过渡 */
+            transition: max-height .25s ease;
         }
 
         .controls.show {
             display: flex;
-            max-height: 300px; /* 展开时最大高度 */
+            max-height: 300px;
         }
 
         .control-item {
             display: flex;
             align-items: center;
-            font-size: 11px; /* 加大控件文字 */
-            color: #555;
-            gap: 3px;
-            width: 48%;
+            min-height: 25px;
+            padding: 3px 5px;
+            font-size: 11px;
+            color: #526579;
+            background: #f6f9fc;
+            border: 1px solid #e4edf5;
+            border-radius: 5px;
+            gap: 4px;
+            width: calc(50% - 3px);
         }
 
         .control-item input[type="checkbox"] {
-            width: 10px; /* 加大复选框 */
-            height: 10px;
-            accent-color: #336dab;
+            width: 13px;
+            height: 13px;
+            accent-color: #2e73ad;
         }
     </style>
 </head>
